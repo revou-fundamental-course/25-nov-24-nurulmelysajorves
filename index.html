@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="flex-container">
+      <div class="kalkulator">
+        <h3>Kalkulator BMI</h3>
+        <p>
+          Berat badan ideal adalah impian semua orang. Tidak memiliki bentuk
+          tubuh yang menunjang penampilan, berat badan ideal juga menandakan
+          kondisi tubuh yang sehat. Bagaimana dengan mu? Yuk, hitung sekarang di
+          Kalkulator BMI.
+        </p>
+        <form class="form">
+          <label for="jenkel">Jenis Kelamin</label>
+          <br />
+          <input type="radio" id="pria" name="gender" value="pria" />
+          <label for="pria">Pria</label>
+          <input type="radio" id="wanita" name="gender" value="wanita" />
+          <label for="wanita">Wanita</label><br />
+
+          <label for="berat">Berat Badan (Kg)</label><br />
+          <input type="text" id="berat" name="berat" /><br />
+
+          <label for="usia">Usia (Tahun)</label><br />
+          <input type="text" id="usia" name="usia" />
+
+          <label for="tinggi">Tinggi Badan (Cm)</label><br />
+          <input type="text" id="tinggi" name="tinggi" />
+
+          <button type="button" onclick="hitung()">Hitung BMI</button>
+
+          <button type="reset" >Reset</button>
+        </form>
+        <h3>Keunggulan Fitur</h3>
+        <p>1. Menghitung berat badan</p>
+        <p>2. Menentukan kategori berat badan ideal atau tidak</p>
+        <p>3. Mempersiapkan program penurun badan</p>
+        <p>
+          Kalkulator ini hanya boleh digunkan oleh orang dewasa (wanita hamil
+          atau menyusui tidak boleh mengandalkan pembacaan BMI ini) dan tidak
+          ada tindakan yang harus diambil berdarkan nilainya selain
+          berkonsultasi dengan orang yang memenuhi syarat seperti dokter.
+        </p>
+        <p>
+          Kalkulator akan memberi anda gambaran tentang perbandingan berat badan
+          anda dengan nilai umum. Indeks Massa Tubuh atau (BMI) dihitung sebagai
+          berat badan Anda (dalam kilogram ) dibagi dengan kuadrat tinggi badan
+          anda (dalam meter) atau BMI = Kg/M2
+        </p>
+      </div>
+
+      <div class="kalkulator2">
+        <h3>Hasil</h3>
+        <div class="hasil">
+          <p id="statusBmi">Status</p>
+          <h4 id="hasilBmi">Anda Memiliki</h4>
+          <button class="btn1" type="button">Download Hasil BMI</button>
+        </div>
+        <p>Hasil BMI diantara 23 dan 25</p>
+
+        <p>Anda berada dalam kategori overweght atau berat badan berlebih.</p>
+
+        <p>
+          Cara terbaik untuk menurunkan berat badan adalh dengan mengatur kalor
+          makanan yang dikonsumsi dan berolahraga. 
+        </p>
+
+        <p>
+          Jika BMi anda berada dalam kategori ini maka anda dianjurkan untuk
+          menurukan berat badan hingga batas normal.
+        </p>
+
+        <button class="btn2" type="button" >Konsultasi Ahli Gizi Via Aplikasi</button>
+
+        <button class="btn3" type="button">Registarasi Online Ahli Gizi</button>
+
+        <p>BMI tidak sepenuhnya mewakili diagnosis menyeluruh dari kesehatan dan resiko penyakit
+          seseorang. Anda perlu konsultasi lebih lanjur mengenai resiko dan kekhawatiran anda terkait
+        dengan berat badan anda. </p>
+
+        <div class="hasil2">
+          <h4>Beberapa penyakit berasal dari kegemukan :</h4>
+          <p>Diabetes</p>
+          <p>Hipertensi</p>
+          <p>Sakit Jantung</p>
+          <p>Osteoarthritis</p>
+
+          <button class="btn4" type="button">Konsultasi Dokter Via Aplikasi</button>
+
+          <button class="btn5" type="button">Registrasi Online Sekarang</button>
+        </div>
+        
+        <div class="gmbr1">
+          <p> Download Aplikasi</p>
+          <div style="display: flex;justify-content: center;">
+            <img src="assets/1.png" alt="">
+            <img src="assets/2.png" alt="">
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <script>
+      const hitung = () => {
+        // mendeklarasikan variable
+        const berat = document.getElementById("berat").value;
+        const tinggi = document.getElementById("tinggi").value;
+        //menghitung hasil bmi
+        const hasil = berat / (tinggi / 100) ** 2;
+        const hasilDibulatKan = Math.round(hasil * 10) / 10;
+        //menetapkan status bmi
+        let statusBmi = "";
+        if (hasilDibulatKan < 18.5) {
+          statusBmi = "Kekurangan berat badan";
+        } else if (hasilDibulatKan <= 24.9) {
+          statusBmi = "Normal (ideal)";
+        } else if (hasilDibulatKan <= 29.9) {
+          statusBmi = "Kelebihan Berat Badan";
+        } else {
+          statusBmi = "Kegemukan (obesitas)";
+        }
+        // memasukan semua nilai ke halaman web
+        document.getElementById("statusBmi").innerText = statusBmi;
+        document.getElementById("hasilBmi").innerText = hasilDibulatKan;
+      };
+
+    
+    </script>
+  </body>
+</html>
